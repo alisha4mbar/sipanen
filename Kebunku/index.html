@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>siPanen App - Data Driven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="top-background"></div>
+
+        <div class="content">
+            <div class="date-pill" id="tanggalHariIni">Memuat Tanggal...</div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <h2 id="statInput">0</h2>
+                    <p>Total Input</p>
+                </div>
+                <div class="stat-card">
+                    <h2 id="statJenis">0</h2>
+                    <p>Komoditas</p>
+                </div>
+                <div class="stat-card">
+                    <h2 id="statBerat">0</h2>
+                    <p>Total Kg</p>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-header">
+                    <span>Tanaman</span>
+                    <span>Total Produktivitas</span>
+                </div>
+                <div class="summary-list" id="summaryList">
+                    <div class="summary-empty">Belum ada data panen</div>
+                </div>
+            </div>
+
+            <div class="banner-card">
+                <div class="banner-content">
+                    <i class="fa-solid fa-seedling banner-icon"></i>
+                    <div>
+                        <h3>siPANEN OFFICIAL</h3>
+                        <p>Sistem Traceability & Kontrol Produksi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-item" onclick="bukaModal('modalInput')">
+                    <div class="icon-circle bg-orange"><i class="fa-solid fa-cart-arrow-down"></i></div>
+                    <p>Catat Panen</p>
+                </div>
+                <div class="menu-item" onclick="bukaModal('modalStok')">
+                    <div class="icon-circle bg-blue"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <p>Stok & Yield</p>
+                </div>
+                <div class="menu-item" onclick="bukaModal('modalRiwayat')">
+                    <div class="icon-circle bg-green"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <p>Riwayat (Trace)</p>
+                </div>
+                <div class="menu-item" onclick="bukaModal('modalLaporan')">
+                    <div class="icon-circle bg-red"><i class="fa-solid fa-chart-line"></i></div>
+                    <p>Dashboard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalInput" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="tutupModal('modalInput')">&times;</span>
+            <h3>Form Input Lapangan</h3>
+            <form id="formPanen">
+                <div class="form-group">
+                    <label>Musim Tanam (Season-Bound)</label>
+                    <select id="musimTanam" required>
+                        <option value="Musim Hujan 2026">Musim Hujan 2026</option>
+                        <option value="Musim Kemarau 2026">Musim Kemarau 2026</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Lokasi (Blok Lahan)</label>
+                    <select id="blokLahan" required>
+                        <option value="">-- Blok Lahan --</option>
+                        <option value="Blok A (Utara)">Blok A (Utara)</option>
+                        <option value="Blok B (Timur)">Blok B (Timur)</option>
+                        <option value="Blok C (Selatan)">Blok C (Selatan)</option>
+                        <option value="Blok D (Barat)">Blok D (Barat)</option>
+                        <option value="Blok E (Tengah)">Blok E (Tengah)</option>
+                        <option value="Gudang Penyimpanan">Gudang Penyimpanan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jenis Tanaman</label>
+                    <select id="namaPanen" required>
+                        <option value="">-- Jenis Panen --</option>
+                        <option value="Padi">Padi</option>
+                        <option value="Jagung">Jagung</option>
+                        <option value="Kedelai">Kedelai</option>
+                        <option value="Cabai Merah">Cabai Merah</option>
+                        <option value="Bawang Merah">Bawang Merah</option>
+                        <option value="kangkung">kangkung</option>
+                        <option value="bayam">bayam</option>
+                        <option value="kemangi">kemangi</option>
+                        <option value="pakcoy">pakcoy</option>
+                        <option value="selada">selada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Berat / Tonase (Kg)</label>
+                    <input type="number" id="jumlahPanen" min="0.1" step="0.1" required>
+                </div>
+                <button type="submit" class="btn-submit"><i class="fa-solid fa-cloud-arrow-up"></i> Simpan & Sinkronisasi</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalStok" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="tutupModal('modalStok')">&times;</span>
+            <h3>Total Produktivitas</h3>
+            <div id="daftarStok" class="list-container"></div>
+        </div>
+    </div>
+
+    <div id="modalRiwayat" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="tutupModal('modalRiwayat')">&times;</span>
+            <h3>Traceability Log</h3>
+            <div id="daftarRiwayat" class="list-container"></div>
+        </div>
+    </div>
+
+    <div id="modalLaporan" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="tutupModal('modalLaporan')">&times;</span>
+            <h3>Laporan Perbandingan Musim</h3>
+            <div class="chart-container" style="position: relative; height:40vh; width:100%; margin-top:20px;">
+                <canvas id="grafikMusim"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Pesan</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
