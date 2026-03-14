@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>siPanen - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen font-['Plus_Jakarta_Sans']">
+    <div class="bg-white w-[900px] h-[550px] rounded-[3rem] shadow-2xl flex overflow-hidden">
+        <div class="w-1/2 bg-[#064E3B] p-12 text-white flex flex-col justify-between relative">
+            <div class="z-10">
+                <div class="flex items-center gap-2 mb-8"><i class="fas fa-leaf text-2xl"></i><span class="text-2xl font-bold italic">siPanen</span></div>
+                <h1 class="text-4xl font-bold leading-tight">Solusi Cerdas Kelola Hasil Bumi.</h1>
+            </div>
+            <p class="text-white/60 text-sm z-10">Sistem Manajemen Panen Terpadu v1.0</p>
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+        </div>
+        <div class="flex-1 p-16 flex flex-col justify-center">
+            <h2 class="text-3xl font-bold mb-8">Selamat Datang! 👋</h2>
+            <form action="dashboard.html" class="space-y-4">
+                <input type="email" value="admin@sipanen.com" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:border-emerald-500">
+                <input type="password" value="123456" class="w-full p-4 bg-slate-50 border rounded-2xl outline-none focus:border-emerald-500">
+                <button type="submit" class="w-full py-4 bg-[#10B981] text-white rounded-2xl font-bold shadow-lg hover:bg-emerald-600 transition-all mt-4">Masuk ke Dashboard</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
